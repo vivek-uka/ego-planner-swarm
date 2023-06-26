@@ -1066,7 +1066,7 @@ namespace ego_planner
     for (int i = 0; i < q.cols() - 2; i++)
     {
       Eigen::Vector3d ai = (q.col(i + 2) - 2 * q.col(i + 1) + q.col(i)) * ts_inv2;
-
+      ROS_INFO_STREAM("Acc feasbility here00");
       for (int j = 0; j < 3; j++)
       {
         if (ai(j) > max_acc_ + demarcation)
@@ -1159,6 +1159,7 @@ namespace ego_planner
     }
 
     /* acceleration feasibility */
+    // ROS_INFO_STREAM("acc feasbility here");
     for (int i = 0; i < q.cols() - 2; i++)
     {
       Eigen::Vector3d ai = (q.col(i + 2) - 2 * q.col(i + 1) + q.col(i)) * ts_inv2;
@@ -1166,27 +1167,49 @@ namespace ego_planner
       //cout << "temp_a * ai=" ;
       for (int j = 0; j < 3; j++)
       {
-        if (ai(j) > max_acc_)
-        {
-          // cout << "zx-todo ACC" << endl;
-          // cout << ai(j) << endl;
-          cost += pow(ai(j) - max_acc_, 2);
+        if(j != 2){
+          if (ai(j) > max_acc_)
+          {
+            // cout << "zx-todo ACC" << endl;
+            // cout << ai(j) << endl;
+            cost += pow(ai(j) - max_acc_, 2);
 
-          gradient(j, i + 0) += 2 * (ai(j) - max_acc_) * ts_inv2;
-          gradient(j, i + 1) += -4 * (ai(j) - max_acc_) * ts_inv2;
-          gradient(j, i + 2) += 2 * (ai(j) - max_acc_) * ts_inv2;
-        }
-        else if (ai(j) < -max_acc_)
-        {
-          cost += pow(ai(j) + max_acc_, 2);
+            gradient(j, i + 0) += 2 * (ai(j) - max_acc_) * ts_inv2;
+            gradient(j, i + 1) += -4 * (ai(j) - max_acc_) * ts_inv2;
+            gradient(j, i + 2) += 2 * (ai(j) - max_acc_) * ts_inv2;
+          }
+          else if (ai(j) < -max_acc_)
+          {
+            cost += pow(ai(j) + max_acc_, 2);
 
-          gradient(j, i + 0) += 2 * (ai(j) + max_acc_) * ts_inv2;
-          gradient(j, i + 1) += -4 * (ai(j) + max_acc_) * ts_inv2;
-          gradient(j, i + 2) += 2 * (ai(j) + max_acc_) * ts_inv2;
+            gradient(j, i + 0) += 2 * (ai(j) + max_acc_) * ts_inv2;
+            gradient(j, i + 1) += -4 * (ai(j) + max_acc_) * ts_inv2;
+            gradient(j, i + 2) += 2 * (ai(j) + max_acc_) * ts_inv2;
+          }
+          else
+          {
+            /* code */
+          }
         }
-        else
-        {
-          /* code */
+        else{
+          if (ai(j) > max_acc_)
+          {
+            // cout << "zx-todo ACC" << endl;
+            // cout << ai(j) << endl;
+            cost += pow(ai(j) - max_acc_, 2);
+
+            gradient(j, i + 0) += 2 * (ai(j) - max_acc_) * ts_inv2;
+            gradient(j, i + 1) += -4 * (ai(j) - max_acc_) * ts_inv2;
+            gradient(j, i + 2) += 2 * (ai(j) - max_acc_) * ts_inv2;
+          }
+          else if (ai(j) < -6.86)
+          {
+            cost += pow(ai(j) + max_acc_, 2);
+
+            gradient(j, i + 0) += 2 * (ai(j) + max_acc_) * ts_inv2;
+            gradient(j, i + 1) += -4 * (ai(j) + max_acc_) * ts_inv2;
+            gradient(j, i + 2) += 2 * (ai(j) + max_acc_) * ts_inv2;
+          }
         }
       }
       //cout << endl;

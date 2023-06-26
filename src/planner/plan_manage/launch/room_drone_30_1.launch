@@ -1,0 +1,473 @@
+<launch>
+
+   <include file="$(find ego_planner)/launch/rviz.launch"/>
+  <arg name="world_frame_id" default="world"/>
+  <arg name="world_file_name" default="room.bt"/>
+  <arg name="world_resolution" default="0.1"/>
+  <node pkg="octomap_server" type="octomap_server_node" name="octomap_server"
+      args="$(find plan_env)/world/$(arg world_file_name)">
+    <param name="resolution"                 value="$(arg world_resolution)" />
+    <param name="frame_id"                   value="$(arg world_frame_id)" type="string"/>
+    <param name="sensor_model/max_range"     value="50.0" />
+    <param name="height_map"                 value="false"/>
+    <param name="color/r"                    value="0.2" />
+    <param name="color/g"                    value="0.2" />
+    <param name="color/b"                    value="0.2" />
+    <param name="color/a"                    value="0.2" />
+  </node>
+
+  <arg name="map_size_x" value="10"/>
+  <arg name="map_size_y" value="10"/>
+  <arg name="map_size_z" value="1.5"/>
+  <arg name="odom_topic" value="visual_slam/odom" />
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="0"/>
+    <arg name="init_x" value="4.14073"/>
+    <arg name="init_y" value="0.167893"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-3.41179"/>
+    <arg name="target_y" value="-2.10781"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="1"/>
+    <arg name="init_x" value="-0.736337"/>
+    <arg name="init_y" value="-0.0225234"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="4.06945"/>
+    <arg name="target_y" value="-3.90674"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="2"/>
+    <arg name="init_x" value="-0.700006"/>
+    <arg name="init_y" value="-2.0656"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="1.19596"/>
+    <arg name="target_y" value="3.75647"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="3"/>
+    <arg name="init_x" value="-0.512705"/>
+    <arg name="init_y" value="-1.35271"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-3.81763"/>
+    <arg name="target_y" value="-3.15471"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="4"/>
+    <arg name="init_x" value="-2.59352"/>
+    <arg name="init_y" value="-0.493891"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="0.949986"/>
+    <arg name="target_y" value="-0.519974"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="5"/>
+    <arg name="init_x" value="4.24166"/>
+    <arg name="init_y" value="3.05517"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-0.579442"/>
+    <arg name="target_y" value="1.21762"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="6"/>
+    <arg name="init_x" value="1.91227"/>
+    <arg name="init_y" value="3.928"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-1.34533"/>
+    <arg name="target_y" value="1.90569"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="7"/>
+    <arg name="init_x" value="-1.9734"/>
+    <arg name="init_y" value="-3.67572"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-0.638691"/>
+    <arg name="target_y" value="-4.26854"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="8"/>
+    <arg name="init_x" value="-3.82271"/>
+    <arg name="init_y" value="-0.101759"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="0.893182"/>
+    <arg name="target_y" value="-1.57647"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="9"/>
+    <arg name="init_x" value="3.79777"/>
+    <arg name="init_y" value="-2.58582"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-1.41129"/>
+    <arg name="target_y" value="-3.911"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="10"/>
+    <arg name="init_x" value="1.84075"/>
+    <arg name="init_y" value="-1.1132"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="1.6688"/>
+    <arg name="target_y" value="3.03662"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="11"/>
+    <arg name="init_x" value="4.04225"/>
+    <arg name="init_y" value="2.23788"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="3.48793"/>
+    <arg name="target_y" value="3.84684"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="12"/>
+    <arg name="init_x" value="3.70269"/>
+    <arg name="init_y" value="1.27192"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-3.77837"/>
+    <arg name="target_y" value="3.23316"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="13"/>
+    <arg name="init_x" value="-3.56169"/>
+    <arg name="init_y" value="-1.17315"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-3.0015"/>
+    <arg name="target_y" value="-1.40432"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="14"/>
+    <arg name="init_x" value="-1.21933"/>
+    <arg name="init_y" value="-1.70327"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-3.45042"/>
+    <arg name="target_y" value="-4.20835"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="15"/>
+    <arg name="init_x" value="1.74712"/>
+    <arg name="init_y" value="-2.54327"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-4.21363"/>
+    <arg name="target_y" value="-2.69022"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="16"/>
+    <arg name="init_x" value="2.31239"/>
+    <arg name="init_y" value="0.0231776"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-1.26595"/>
+    <arg name="target_y" value="-3.27743"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="17"/>
+    <arg name="init_x" value="0.470635"/>
+    <arg name="init_y" value="3.56271"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="3.73403"/>
+    <arg name="target_y" value="-0.422827"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="18"/>
+    <arg name="init_x" value="4.27003"/>
+    <arg name="init_y" value="-1.46681"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-4.16702"/>
+    <arg name="target_y" value="2.73035"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="19"/>
+    <arg name="init_x" value="-4.16256"/>
+    <arg name="init_y" value="1.08396"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-2.58914"/>
+    <arg name="target_y" value="-4.39598"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="20"/>
+    <arg name="init_x" value="1.6675"/>
+    <arg name="init_y" value="-3.37216"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="2.13032"/>
+    <arg name="target_y" value="1.05335"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="21"/>
+    <arg name="init_x" value="-1.18024"/>
+    <arg name="init_y" value="1.00994"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-1.93608"/>
+    <arg name="target_y" value="3.26273"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="22"/>
+    <arg name="init_x" value="-3.40976"/>
+    <arg name="init_y" value="0.894635"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="0.201386"/>
+    <arg name="target_y" value="4.23519"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="23"/>
+    <arg name="init_x" value="-2.44039"/>
+    <arg name="init_y" value="3.76402"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="4.31676"/>
+    <arg name="target_y" value="3.88099"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="24"/>
+    <arg name="init_x" value="2.02351"/>
+    <arg name="init_y" value="-1.83931"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-0.165951"/>
+    <arg name="target_y" value="-0.454986"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="25"/>
+    <arg name="init_x" value="-1.23156"/>
+    <arg name="init_y" value="3.83017"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="0.261002"/>
+    <arg name="target_y" value="1.72718"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="26"/>
+    <arg name="init_x" value="-4.3777"/>
+    <arg name="init_y" value="3.89438"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-4.37132"/>
+    <arg name="target_y" value="0.166232"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="27"/>
+    <arg name="init_x" value="-1.64962"/>
+    <arg name="init_y" value="-0.522485"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="0.151692"/>
+    <arg name="target_y" value="-1.38509"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="28"/>
+    <arg name="init_x" value="0.1031"/>
+    <arg name="init_y" value="2.32895"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="-2.50163"/>
+    <arg name="target_y" value="2.86723"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+  <include file="$(find ego_planner)/launch/run_in_sim.launch">
+    <arg name="drone_id" value="29"/>
+    <arg name="init_x" value="1.75099"/>
+    <arg name="init_y" value="0.291862"/>
+    <arg name="init_z" value="0.5"/>
+
+    <arg name="target_x" value="1.17534"/>
+    <arg name="target_y" value="-4.02476"/>
+    <arg name="target_z" value="0.5"/>
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
+  </include>
+</launch>
